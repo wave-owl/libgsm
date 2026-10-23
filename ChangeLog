@@ -1,3 +1,14 @@
+Sun Aug 31 20:25:13 2025	Jutta Degener (jutta@pobox.com)
+
+	* Release 1.0 Patchlevel 23
+	Declare signal handlers as accepting an int; sometimes, gcc cares.
+	(Thanks to Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+	for the patch; errors are mine.)
+	Also, write &"s"[x == 1] instead of "s" + (x == 1) to pluralize
+	(pointer arithmetic on arrays is so rare as to elicit compiler warnings
+	in some settings); and why didn't toast_lin.c:linear_input() have a
+	P1 proto macro like linear_output()?
+
 Thu Aug  4 18:47:10 2022	Jutta Degener (jutta@pobox.com)
 
 	* Release 1.0 Patchlevel 22

@@ -211,7 +211,7 @@ static char * suffix P2((name, suf), char *name, char * suf)
 }
 
 
-static void catch_signals P1((fun), SIGHANDLER_T (*fun) ())
+static void catch_signals P1((fun), SIGHANDLER_T (*fun) (int))
 {
 #ifdef	SIGHUP
 	signal( SIGHUP,   fun );
@@ -230,7 +230,7 @@ static void catch_signals P1((fun), SIGHANDLER_T (*fun) ())
 #endif
 }
 
-static SIGHANDLER_T onintr P0()
+static SIGHANDLER_T onintr P1((signo), int signo)
 {
 	char * tmp = outname;
 
@@ -253,7 +253,7 @@ static char * emalloc P1((len), size_t len)
 	if (!(s = malloc(len))) {
 		fprintf(stderr, "%s: failed to malloc %d bytes -- abort\n",
 			progname, (int)len);
-		onintr();
+		onintr(0);
 		exit(1);
 	}
 	return s;
@@ -418,7 +418,7 @@ static int okay_as_input P3((name,f,st), char* name, FILE* f, struct stat * st)
 		fprintf(stderr,
 		      "%s: \"%s\" has %d other link%s -- unchanged.\n",
 			progname, name, (int)(st->st_nlink - 1),
-			"s" + (st->st_nlink <= 2));
+			&"s"[st->st_nlink == 2]);
 		return 0;
 	}
 	return 1;
@@ -588,7 +588,7 @@ static int process_decode P0()
 			if (cc >= 0) fprintf(stderr,
 			"%s: incomplete frame (%d byte%s missing) from %s\n",
 					progname, (int)(sizeof(s) - cc),
-					"s" + (sizeof(s) - cc == 1),
+					&"s"[sizeof(s) - cc == 1],
 					inname ? inname : "stdin" );
 			gsm_destroy(r);
 			errno = 0;

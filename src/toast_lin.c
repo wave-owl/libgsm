@@ -13,7 +13,7 @@
 
 extern FILE	*in, *out;
 
-int linear_input (buf) gsm_signal * buf;
+int linear_input P1((buf), gsm_signal * buf)
 {
 	return fread( (char *)buf, sizeof(*buf), 160, in );
 }
