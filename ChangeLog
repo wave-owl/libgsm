@@ -1,3 +1,9 @@
+Mon Jul  4 10:34:18 PDT 2022
+
+	* Release 1.0 Patchlevel 20
+	Use $(RMFLAGS) with the rms in the Makefile; add -f to $(RMFLAGS) to
+        avoid spurious error messages during build.
+
 Fri Mar 27 15:18:06  2020
 
 	* Release 1.0 Patchlevel 19

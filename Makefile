@@ -73,6 +73,9 @@ LD 		= $(CC)
 
 INSTALL_ROOT	=
 
+# What's this release's version? Part of the directory and archive file name.
+VERSION = 1.0-pl20
+
 # Where do you want to install the gsm library, header file, and manpages?
 #
 # Leave GSM_INSTALL_ROOT empty to not install the GSM library outside of
@@ -100,7 +103,7 @@ LN		= ln
 BASENAME 	= basename
 AR		= ar
 ARFLAGS		= cr
-RMFLAGS		=
+RMFLAGS		= -f
 FIND		= find
 COMPRESS 	= gzip
 COMPRESSFLAGS 	= 
@@ -351,50 +354,50 @@ toastuninstall:
 		fi
 
 $(TOAST_INSTALL_BIN)/toast:	$(TOAST)
-		-rm $@
+		-rm $(RMFLAGS) $@
 		cp $(TOAST) $@
 		chmod 755 $@
 
 $(TOAST_INSTALL_BIN)/untoast:	$(TOAST_INSTALL_BIN)/toast
-		-rm $@
+		-rm $(RMFLAGS) $@
 		ln $? $@
 
 $(TOAST_INSTALL_BIN)/tcat:	$(TOAST_INSTALL_BIN)/toast
-		-rm $@
+		-rm $(RMFLAGS) $@
 		ln $? $@
 
 $(TOAST_INSTALL_MAN)/toast.1:	$(MAN)/toast.1
-		-rm $@
+		-rm $(RMFLAGS) $@
 		cp $? $@
 		chmod 444 $@
 
 $(GSM_INSTALL_MAN)/gsm.3:	$(MAN)/gsm.3
-		-rm $@
+		-rm $(RMFLAGS) $@
 		cp $? $@
 		chmod 444 $@
 
 $(GSM_INSTALL_MAN)/gsm_option.3:	$(MAN)/gsm_option.3
-		-rm $@
+		-rm $(RMFLAGS) $@
 		cp $? $@
 		chmod 444 $@
 
 $(GSM_INSTALL_MAN)/gsm_explode.3:	$(MAN)/gsm_explode.3
-		-rm $@
+		-rm $(RMFLAGS) $@
 		cp $? $@
 		chmod 444 $@
 
 $(GSM_INSTALL_MAN)/gsm_print.3:	$(MAN)/gsm_print.3
-		-rm $@
+		-rm $(RMFLAGS) $@
 		cp $? $@
 		chmod 444 $@
 
 $(GSM_INSTALL_INC)/gsm.h:	$(INC)/gsm.h
-		-rm $@
+		-rm $(RMFLAGS) $@
 		cp $? $@
 		chmod 444 $@
 
 $(GSM_INSTALL_LIB)/libgsm.a:	$(LIBGSM)
-		-rm $@
+		-rm $(RMFLAGS) $@
 		cp $? $@
 		chmod 444 $@
 
@@ -404,7 +407,7 @@ $(GSM_INSTALL_LIB)/libgsm.a:	$(LIBGSM)
 dist:		gsm-1.0.tar.gz
 		@echo dist: Done.
 
-gsm-1.0.tar.gz:	$(STUFF) $(SOURCES) $(HEADERS) $(MANUALS)
+$(ROOT)/gsm-1.0.tar.gz:	$(STUFF) $(SOURCES) $(HEADERS) $(MANUALS)
 		(	cd $(ROOT)/..;				\
 			tar cvf - `cat $(ROOT)/gsm-1.0/MANIFEST	\
 				| sed '/^#/d'`			\
@@ -427,7 +430,7 @@ semi-clean:
 clean:	semi-clean
 		-rm $(RMFLAGS) $(LIBGSM) $(ADDTST)/add		\
 			$(TOAST) $(TCAT) $(UNTOAST)	\
-			$(ROOT)/gsm-1.0.tar.Z
+			$(ROOT)/gsm-1.0.tar.gz
 
 
 # Two tools that helped me generate gsm_encode.c and gsm_decode.c,
