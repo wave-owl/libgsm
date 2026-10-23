@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <assert.h>
+#include <unistd.h>
 
 #include	"gsm.h"
 #include	"proto.h"

@@ -1,3 +1,15 @@
+Fri Mar  6 07:16:24 2026 Jutta Degener (jutta@pobox.com)
+
+	* Release 1.0 Patchlevel 24
+	Left-shifting negative signed integers is undefined behavior as per
+	the C standard; so let's not do that.
+	Thanks to Nanang Izzuddin <nanang@teluu.com> for an exhaustive list
+	of places where we definitely did do that, and for the patience to
+	wait until I managed to Actually Read What the C99 Standard Says,
+	rather than what I _want_ it to say.
+	Also, don't forget the P0() and the void and int return types in a few
+	places of the test code.
+
 Sun Aug 31 20:25:13 2025	Jutta Degener (jutta@pobox.com)
 
 	* Release 1.0 Patchlevel 23

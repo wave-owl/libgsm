@@ -34,7 +34,7 @@ word M_gsm_abs P((word op1));
 longword M_gsm_L_mult P((word op1, word op2));
 longword M_gsm_L_add P((longword op1, longword op2));
 
-void help()
+void help P0()
 {
 puts( "  add a b      sub a b     mult a b   div    a b" );
 puts( "L_add A B    L_sub A B   L_mult A B   mult_r a b" );
@@ -180,7 +180,7 @@ void do_word P1((w), word w )
 	} else if (interactive) putchar('\n');
 }
 
-int main(ac, av) char ** av;
+int main P2((ac, av), int ac, char ** av)
 {
 	char	buf[299];
 	char	* c;
@@ -310,6 +310,7 @@ fail:
 		}
 		help();
 	}
+	return 0;
 }
 
 #include "private.h"

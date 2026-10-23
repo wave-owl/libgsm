@@ -6,7 +6,16 @@
 
 /*$Header: /tmp_amd/presto/export/kbs/jutta/src/gsm/RCS/cod2lin.c,v 1.2 1996/07/02 14:33:10 jutta Exp jutta $*/
 
+#ifdef	HAS_STDLIB_H
+#	include	<stdlib.h>
+#else
+extern void exit(int);
+#endif
+
+#include <unistd.h>
+
 #include <stdio.h>
+#include <string.h>
 #include <assert.h>
 
 #include	"gsm.h"
@@ -20,10 +29,10 @@ int	fast       = 0;
 int	wav        = 0;
 int	error      = 0;
 
-usage P0()
+int usage P0()
 {
 	fprintf(stderr, "Usage: %s [-vwF] [files...]\n", pname);
-	exit(1);
+	return 1;
 }
 
 void process P2((f, filename), FILE * f, char * filename)
@@ -71,7 +80,7 @@ void process P2((f, filename), FILE * f, char * filename)
 	}
 }
 
-main P2((ac, av), int ac, char ** av)
+int main P2((ac, av), int ac, char ** av)
 {
 	int 		opt;
 	extern char   * optarg;
@@ -85,7 +94,7 @@ main P2((ac, av), int ac, char ** av)
 	case 'v': verbosity++; 	  break;
 	case 'w': wav++; 	  break;
 	case 'F': fast++;	  break;
-	default:  usage();
+	default:  return usage();
 	}
 
 	ac -= optind;
@@ -100,5 +109,5 @@ main P2((ac, av), int ac, char ** av)
 		}
 	}
 
-	exit(error);
+	return error;
 }

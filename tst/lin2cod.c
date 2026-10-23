@@ -7,6 +7,7 @@
 /*$Header: /tmp_amd/presto/export/kbs/jutta/src/gsm/RCS/lin2cod.c,v 1.2 1996/07/02 14:33:13 jutta Exp jutta $*/
 
 #include <stdio.h>
+#include <unistd.h>
 
 #include "gsm.h"
 #include "proto.h"
@@ -19,10 +20,10 @@ int	fast       = 0;
 int	wav        = 0;
 int	error      = 0;
 
-usage P0()
+int usage P0()
 {
 	fprintf(stderr, "Usage: %s [-vwF] [files...]\n", pname);
-	exit(1);
+	return 1;
 }
 
 void process P2((f, filename), FILE * f, char * filename)
@@ -72,7 +73,7 @@ void process P2((f, filename), FILE * f, char * filename)
 	}
 }
 
-main P2((ac, av), int ac, char ** av)
+int main P2((ac, av), int ac, char ** av)
 {
 	int 		opt;
 	extern char   * optarg;
@@ -86,7 +87,7 @@ main P2((ac, av), int ac, char ** av)
 	case 'v': verbosity++;    break;
 	case 'w': wav++;    	  break;
 	case 'F': fast++;         break;
-	default:  usage();
+	default:  return usage();
 	}
 
 	ac -= optind;
@@ -100,6 +101,5 @@ main P2((ac, av), int ac, char ** av)
 			fclose(f);
 		}
 	}
-
-	exit(error);
+	return error;
 }
