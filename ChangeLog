@@ -1,4 +1,11 @@
-Mon Jul  4 10:34:18 PDT 2022
+Sun Jul 31 16:17:59 2022	Jutta Degener (jutta@pobox.com)
+
+	* Release 1.0 Patchlevel 21
+	Use $(LN), not ln, in the Makefile rules for the installed binary
+ 	of untoast and tcat.
+	(Thanks to Carlo Cabrera for pointing that out!)
+
+Mon Jul  4 10:34:18 2022
 
 	* Release 1.0 Patchlevel 20
 	Use $(RMFLAGS) with the rms in the Makefile; add -f to $(RMFLAGS) to

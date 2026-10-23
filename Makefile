@@ -360,11 +360,11 @@ $(TOAST_INSTALL_BIN)/toast:	$(TOAST)
 
 $(TOAST_INSTALL_BIN)/untoast:	$(TOAST_INSTALL_BIN)/toast
 		-rm $(RMFLAGS) $@
-		ln $? $@
+		$(LN) $? $@
 
 $(TOAST_INSTALL_BIN)/tcat:	$(TOAST_INSTALL_BIN)/toast
 		-rm $(RMFLAGS) $@
-		ln $? $@
+		$(LN) $? $@
 
 $(TOAST_INSTALL_MAN)/toast.1:	$(MAN)/toast.1
 		-rm $(RMFLAGS) $@
