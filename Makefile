@@ -73,9 +73,6 @@ LD 		= $(CC)
 
 INSTALL_ROOT	=
 
-# What's this release's version? Part of the directory and archive file name.
-VERSION = 1.0-pl20
-
 # Where do you want to install the gsm library, header file, and manpages?
 #
 # Leave GSM_INSTALL_ROOT empty to not install the GSM library outside of

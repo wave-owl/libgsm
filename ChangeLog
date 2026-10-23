@@ -1,3 +1,9 @@
+Thu Aug  4 18:47:10 2022	Jutta Degener (jutta@pobox.com)
+
+	* Release 1.0 Patchlevel 22
+	Remove unused, and occasionally out of date, VERSION variable
+	from Makefile.
+
 Sun Jul 31 16:17:59 2022	Jutta Degener (jutta@pobox.com)
 
 	* Release 1.0 Patchlevel 21
