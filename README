@@ -35,3 +35,9 @@ Fax: +49.30.31425156, Phone: +49.30.31424315
 Copyright 1992 by Jutta Degener and Carsten Bormann, Technische
 Universitaet Berlin.  See the accompanying file "COPYRIGHT" for
 details.  THERE IS ABSOLUTELY NO WARRANTY FOR THIS SOFTWARE.
+
+## Source SBOM
+
+See [repository source SBOM report](SBOM.md). Release reports are generated automatically.
+
+The [source SBOM policy](SBOM-POLICY.md) describes automatic release artifacts.

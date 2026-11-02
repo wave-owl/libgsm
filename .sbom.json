@@ -1,0 +1,21 @@
+{
+  "gitlinks": {},
+  "vendored": [],
+  "models": [],
+  "external_libraries": [
+    {
+      "name": "Conditional source requirements declared by Makefile",
+      "version": "unresolved; see immutable declaration evidence",
+      "evidence": [
+        "Makefile"
+      ]
+    },
+    {
+      "name": "Standalone C GSM codec; Makefile",
+      "version": "unresolved; conditional source declaration",
+      "evidence": [
+        "Makefile"
+      ]
+    }
+  ]
+}
